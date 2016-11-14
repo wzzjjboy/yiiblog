@@ -1,0 +1,59 @@
+2016/11/14 17:21:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'blog.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2016/11/14 17:54:56 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMARY KEY (`id`)' at line 6. The SQL statement executed was: CREATE TABLE `tbl_post` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`title` varchar(50) not null,
+	`content` text not null,
+	`status` tinyint(2)
+) PRIMARY KEY (`id`).
+2016/11/14 17:54:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMARY KEY (`id`)' at line 6. The SQL statement executed was: CREATE TABLE `tbl_post` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`title` varchar(50) not null,
+	`content` text not null,
+	`status` tinyint(2)
+) PRIMARY KEY (`id`)' in D:\www\blog\framework\db\CDbCommand.php:358
+Stack trace:
+#0 D:\www\blog\framework\db\CDbCommand.php(1352): CDbCommand->execute()
+#1 D:\www\blog\framework\db\CDbMigration.php(250): CDbCommand->createTable('tbl_post', Array, 'PRIMARY KEY (`i...')
+#2 D:\www\blog\app\protected\migrations\m161114_092308_create_post_table.php(12): CDbMigration->createTable('tbl_post', Array, 'PRIMARY KEY (`i...')
+#3 D:\www\blog\framework\cli\commands\MigrateCommand.php(415): m161114_092308_create_post_table->up()
+#4 D:\www\blog\framework\cli\commands\MigrateCommand.php(109): MigrateCommand->migrateUp('m161114_092308_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 D:\www\blog\framework\console\CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 D:\www\blog\framework\console\CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#8 D:\www\blog\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 D:\www\blog\framework\base\CApplication.php(185): CConsoleApplication->processRequest()
+#10 D:\www\blog\framework\yiic.php(33): CApplication->run()
+#11 D:\www\blog\app\protected\yiic.php(7): require_once('D:\www\blog\fra...')
+#12 {main}
+---
+2016/11/14 18:55:02 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1072 Key column 'name' doesn't exist in table. The SQL statement executed was: CREATE TABLE `tbl_user` (
+	`id` int(11) not null auto_increment,
+	`username` varchar(20) not null,
+	`password` char(32) not null,
+	`salt` varchar(50) not null,
+	primary key(id),
+	UNIQUE INDEX (`name`)
+) engine=InnoDB.
+2016/11/14 18:55:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1072 Key column 'name' doesn't exist in table. The SQL statement executed was: CREATE TABLE `tbl_user` (
+	`id` int(11) not null auto_increment,
+	`username` varchar(20) not null,
+	`password` char(32) not null,
+	`salt` varchar(50) not null,
+	primary key(id),
+	UNIQUE INDEX (`name`)
+) engine=InnoDB' in D:\www\blog\framework\db\CDbCommand.php:358
+Stack trace:
+#0 D:\www\blog\framework\db\CDbCommand.php(1352): CDbCommand->execute()
+#1 D:\www\blog\framework\db\CDbMigration.php(250): CDbCommand->createTable('tbl_user', Array, 'engine=InnoDB')
+#2 D:\www\blog\app\protected\migrations\m161114_104947_create_tbl_user_table.php(14): CDbMigration->createTable('tbl_user', Array, 'engine=InnoDB')
+#3 D:\www\blog\framework\cli\commands\MigrateCommand.php(415): m161114_104947_create_tbl_user_table->up()
+#4 D:\www\blog\framework\cli\commands\MigrateCommand.php(109): MigrateCommand->migrateUp('m161114_104947_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 D:\www\blog\framework\console\CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 D:\www\blog\framework\console\CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#8 D:\www\blog\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 D:\www\blog\framework\base\CApplication.php(185): CConsoleApplication->processRequest()
+#10 D:\www\blog\framework\yiic.php(33): CApplication->run()
+#11 D:\www\blog\app\protected\yiic.php(7): require_once('D:\www\blog\fra...')
+#12 {main}
+---
